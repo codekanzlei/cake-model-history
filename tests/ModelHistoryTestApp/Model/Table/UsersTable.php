@@ -5,12 +5,12 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-use ModelHistoryTestApp\Model\Entity\Article;
+use ModelHistoryTestApp\Model\Entity\User;
 
 /**
- * Articles Model
+ * Users Model
  */
-class ArticlesTable extends Table
+class UsersTable extends Table
 {
 
     /**
@@ -21,8 +21,8 @@ class ArticlesTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('articles');
-        $this->displayField('title');
+        $this->table('users');
+        $this->displayField('forename');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
         $this->addBehavior('ModelHistory.Historizable', [
@@ -30,7 +30,7 @@ class ArticlesTable extends Table
             'fields' => [
                 [
                     'name' => 'id',
-                    'translation' => __('articles.id'),
+                    'translation' => __('users.id'),
                     'searchable' => true,
                     'saveable' => true,
                     'obfuscated' => false,
@@ -39,8 +39,8 @@ class ArticlesTable extends Table
                     'saveParser' => null
                 ],
                 [
-                    'name' => 'title',
-                    'translation' => __('articles.title'),
+                    'name' => 'forename',
+                    'translation' => __('users.forename'),
                     'searchable' => true,
                     'saveable' => true,
                     'obfuscated' => false,
@@ -49,40 +49,10 @@ class ArticlesTable extends Table
                     'saveParser' => null
                 ],
                 [
-                    'name' => 'status',
-                    'translation' => __('articles.status'),
+                    'name' => 'surname',
+                    'translation' => __('users.surname'),
                     'searchable' => true,
                     'saveable' => true,
-                    'obfuscated' => false,
-                    'type' => 'string',
-                    'displayParser' => null,
-                    'saveParser' => null
-                ],
-                [
-                    'name' => 'content',
-                    'translation' => __('articles.content'),
-                    'searchable' => true,
-                    'saveable' => true,
-                    'obfuscated' => false,
-                    'type' => 'string',
-                    'displayParser' => null,
-                    'saveParser' => null
-                ],
-                [
-                    'name' => 'json_field',
-                    'translation' => __('articles.json_field'),
-                    'searchable' => false,
-                    'saveable' => false,
-                    'obfuscated' => false,
-                    'type' => 'string',
-                    'displayParser' => null,
-                    'saveParser' => null
-                ],
-                [
-                    'name' => 'int_field',
-                    'translation' => __('articles.int_field'),
-                    'searchable' => false,
-                    'saveable' => false,
                     'obfuscated' => false,
                     'type' => 'string',
                     'displayParser' => null,
@@ -103,12 +73,8 @@ class ArticlesTable extends Table
         $validator
             ->add('id', 'valid', ['rule' => 'uuid'])
             ->allowEmpty('id', 'create')
-            ->allowEmpty('title')
-            ->allowEmpty('status')
-            ->allowEmpty('content')
-            ->allowEmpty('json_field')
-            ->add('int_field', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('int_field');
+            ->allowEmpty('forename')
+            ->allowEmpty('surname');
 
         return $validator;
     }
