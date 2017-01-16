@@ -4,6 +4,7 @@ namespace ModelHistory\Test\TestCase\Model\Entity;
 use Cake\Network\Request;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use ModelHistory\Model\Entity\ModelHistory;
 use ModelHistoryTestApp\Model\Entity\Article;
 use ModelHistory\Model\Entity\ModelHistory;
 
